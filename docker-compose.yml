@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: joaovitorsd/gerenciamento-pessoas-frotend
+    environment:
+      - API_URL=http://backend:8080/v1
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+  backend:
+    image: joaovitorsd/gerenciamento-pessoas-backend
+    environment:
+        - SPRING_DATASOURCE_URL=jdbc:h2:mem:gerenciamento
+        - SPRING_DATASOURCE_USERNAME=sa
+        - SPRING_DATASOURCE_PASSWORD=sa
+        - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        - SPRING_JPA_SHOW_SQL=true
+        - SEED_DATA=true
+    ports:
+      - "8080:8080"
