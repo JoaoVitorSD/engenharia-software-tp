@@ -8,7 +8,7 @@
 		<version>3.1.11</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ai.attus</groupId>
+	<groupId>tp</groupId>
 	<artifactId>gerenciamento</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gerenciamento</name>
