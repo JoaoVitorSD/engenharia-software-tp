@@ -70,9 +70,3 @@ docker-compose pull
 docker-compose up
 ```
 Este comando irá rodar o frontend na porta 3000 e o backend na porta 8080.
-
-
-## Qualidade de Código
-
-Para garantir a qualidade do código, o projeto tem a action de CI/CD integrada ao sonarcloud, que realiza a análise estática do código.
-A análise está disponível em: https://sonarcloud.io/summary/overall?id=JoaoVitorSD_gerenciamento-pessoas-api

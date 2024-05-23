@@ -52,9 +52,7 @@ public class EnderecoInteractor {
             enderecos.stream()
                     .filter(Endereco::isEnderecoPrincipal)
                     .forEach(e -> e.setEnderecoPrincipal(false));
-            enderecos.stream()
-                    .filter(Endereco::isEnderecoPrincipal)
-                    .forEach(e -> e.setEnderecoPrincipal(false));
+
         }
     }
 
