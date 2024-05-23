@@ -8,7 +8,8 @@ public class Validator {
 
 
     public static void stringBlank(String value, String fieldName){
-        if(value==null || value.isBlank())
+        boolean isNullOrBlank = value==null || value.isBlank();
+        if(isNullOrBlank)
             throw new ParametroInvalidoException(fieldName, ParametroInvalidoException.ParametroTipo.STRING_BLANK);
     }
     public static void dateNull(LocalDate value, String fieldName){
