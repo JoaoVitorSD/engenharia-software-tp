@@ -11,6 +11,7 @@ import java.util.UUID;
 public class EnderecoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "endereco_id")
     private UUID id;
 
     @ManyToOne

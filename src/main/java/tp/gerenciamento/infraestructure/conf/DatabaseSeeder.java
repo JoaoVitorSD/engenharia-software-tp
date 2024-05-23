@@ -19,7 +19,7 @@ public class DatabaseSeeder {
     @PostConstruct
     public void setupEnvironment() {
         jdbcTemplate.execute("drop table if exists pessoa_resumida;");
-        jdbcTemplate.execute("create view pessoa_resumida as select pessoa.pessoa_id, pessoa.nome,pessoa.concatenated_info,pessoa.data_nascimento, endereco.logradouro, endereco.cep, endereco.numero, endereco.cidade,endereco.estado  from pessoa left join endereco on pessoa.pessoa_id = endereco.pessoa_id and endereco.principal = true;");
+        jdbcTemplate.execute("create view pessoa_resumida as select pessoa.pessoa_id, pessoa.nome,pessoa.concatenated_info,pessoa.data_nascimento,endereco.endereco_id, endereco.logradouro, endereco.cep, endereco.numero, endereco.cidade,endereco.estado  from pessoa left join endereco on pessoa.pessoa_id = endereco.pessoa_id and endereco.principal = true;");
 
         seedDatabase();
     }

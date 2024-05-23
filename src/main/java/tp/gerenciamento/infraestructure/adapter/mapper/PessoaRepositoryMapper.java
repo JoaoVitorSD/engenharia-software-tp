@@ -34,6 +34,7 @@ public abstract class PessoaRepositoryMapper {
         pessoa.setNome(entity.getNome());
         pessoa.setDataNascimento(entity.getDataNascimento());
         Endereco endereco = new Endereco();
+        endereco.setId(String.valueOf(entity.getEndereco()));
         endereco.setLogradouro(entity.getLogradouro());
         endereco.setCidade(entity.getCidade());
         endereco.setEstado(entity.getEstado());
