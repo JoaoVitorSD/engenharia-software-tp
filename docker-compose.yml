@@ -10,7 +10,7 @@ services:
     depends_on:
       - backend
   backend:
-    image: joaovitorsd/gerenciamento-pessoas-backend
+    image: joaovitorsd/engenharia-software-tp
     environment:
         - SPRING_DATASOURCE_URL=jdbc:h2:mem:gerenciamento
         - SPRING_DATASOURCE_USERNAME=sa

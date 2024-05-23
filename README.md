@@ -57,7 +57,7 @@ O projeto estará disponível em http://localhost:8080
 
 A imagem está integrada ao Docker Hub, com CI/CD no GitHub Actions. Para executar o projeto via Docker, basta executar o seguinte comando:
 ```shell
-docker run -p 8080:8080 -d --name api-gerenciamento joaovitorsd/gerenciamento-pessoas-backend
+docker run -p 8080:8080 -d --name api-gerenciamento joaovitorsd/engenharia-software-tp
 ```
 
 ## Seed de Dados
