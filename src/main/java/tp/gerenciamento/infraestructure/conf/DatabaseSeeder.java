@@ -14,7 +14,6 @@ import static tp.gerenciamento.infraestructure.conf.EntityFabric.*;
 public class DatabaseSeeder {
     private final JdbcTemplate jdbcTemplate;
     private final PessoaInteractor pessoaInteractor;
-    private final EnderecoInteractor enderecoInteractor;
     private boolean seedData;
 
     @PostConstruct
@@ -35,10 +34,9 @@ public class DatabaseSeeder {
     }
 
 
-    public DatabaseSeeder(JdbcTemplate jdbcTemplate, PessoaInteractor pessoaInteractor, EnderecoInteractor enderecoInteractor, @Value("${seed.data:false}") Boolean seedData) {
+    public DatabaseSeeder(JdbcTemplate jdbcTemplate, PessoaInteractor pessoaInteractor, @Value("${seed.data:false}") Boolean seedData) {
         this.jdbcTemplate = jdbcTemplate;
         this.pessoaInteractor = pessoaInteractor;
-        this.enderecoInteractor = enderecoInteractor;
         this.seedData = seedData;
     }
 
