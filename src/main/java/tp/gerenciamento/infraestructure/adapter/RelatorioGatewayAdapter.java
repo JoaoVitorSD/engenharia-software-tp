@@ -40,8 +40,9 @@ public class RelatorioGatewayAdapter implements RelatorioGateway {
 
         HashMap<String, Object> cidadesEstados = new HashMap<>();
         for (Map<String, Object> row : result) {
-            if (cidadesEstados.containsKey(row.get("estado"))) {
-                ((HashMap) cidadesEstados.get(row.get("estado")))
+            String estado = (String) row.get("estado");
+            if (cidadesEstados.containsKey(estado)) {
+                ((HashMap) cidadesEstados.get(estado))
                         .put( row.get("cidade"),row.get("ocorrencias"));
             } else {
                 HashMap<String, Object> cidade = new HashMap<>();
