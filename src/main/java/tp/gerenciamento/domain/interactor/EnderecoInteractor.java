@@ -42,17 +42,14 @@ public class EnderecoInteractor {
     }
 
     private void substituirEnderecoPrincipal(Pessoa pessoa, Endereco endereco) {
-        List<Endereco> enderecos = pessoa.getEnderecos();
-        if (enderecos == null|| enderecos.isEmpty()) {
+        Endereco enderecoPrincipal = pessoa.getEnderecoPrincipal();
+        if (enderecoPrincipal==null) {
             endereco.setEnderecoPrincipal(true);
             return;
         }
 
         if (endereco.isEnderecoPrincipal()) {
-            enderecos.stream()
-                    .filter(Endereco::isEnderecoPrincipal)
-                    .forEach(e -> e.setEnderecoPrincipal(false));
-
+            enderecoPrincipal.setEnderecoPrincipal(false);
         }
     }
 
