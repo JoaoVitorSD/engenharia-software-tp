@@ -2,6 +2,14 @@
 
 Aplicação para gerenciamento de pessoas e seus endereços.
 
+## Integrantes
+| Nome                                  |
+|---------------------------------------|
+| João Vitor Santana Depollo            |
+| Marcos Paulo Ferreira de Souza        |
+| Pedro de Oliveira Guedes              |
+| Tatiana Alvares Guimaraes de Oliveira |
+
 # Funcionalidades
 - Criar, editar e consultar uma ou mais pessoas;
 
@@ -38,6 +46,17 @@ Ao salvar uma pessoa, o primeiro endereço cadastrado será considerado como pri
 - JUnit
 - Maven
 - Jacoco
+
+# Arquitetura
+A aplicação foi implementada baseado nos princípios da clean architecture, com a separação de camadas de acordo com suas responsabilidades.
+- domain: 
+  - Contém as entidades e regras de negócio da aplicação.
+  - Gateways para comunicação com a camada de infraestrutura.
+  - Interactors para implementação das regras de negócio.
+- infrastructure:
+  - Contém as implementações dos gateways definidos na camada de domínio.
+  - Implementações dos controllers e configurações do Spring Boot.
+
 # Execução e Build
 
 O projeto pode ser executado de duas formas: localmente ou via container Docker.
