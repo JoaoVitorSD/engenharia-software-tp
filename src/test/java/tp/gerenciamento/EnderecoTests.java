@@ -155,4 +155,5 @@ public class EnderecoTests {
         assertEquals(request.isEnderecoPrincipal(), response.getEnderecoPrincipal());
     }
 
+
 }
