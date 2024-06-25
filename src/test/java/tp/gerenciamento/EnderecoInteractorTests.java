@@ -2,11 +2,13 @@ package tp.gerenciamento;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,10 +20,14 @@ import tp.gerenciamento.domain.interactor.EnderecoInteractor;
 import tp.gerenciamento.infraestructure.adapter.PessoaGatewayAdapter;
 import tp.gerenciamento.infraestructure.conf.EntityFabric;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
@@ -35,14 +41,20 @@ public class EnderecoInteractorTests {
 
     private Pessoa pessoa;
     private Endereco endereco;
-    @Autowired
+    @MockBean
     private PessoaGatewayAdapter pessoaGatewayAdapter;
-
+    @BeforeAll
+    public static void beforeAll(){
+    }
     @BeforeEach
     public void setup(){
-        pessoa = pessoaGatewayAdapter.salvar( EntityFabric.randomPessoa());
-        endereco = EntityFabric.randomEndereco();
+        doNothing().when(pessoaGatewayAdapter).deleteById(anyString());
+        pessoa = EntityFabric.randomPessoa();
+        pessoa.setId(UUID.randomUUID().toString());
+        when(pessoaGatewayAdapter.salvar(pessoa)).thenReturn(pessoa);
 
+        when(pessoaGatewayAdapter.findById(pessoa.getId())).thenReturn(Optional.of(pessoa));
+        endereco = EntityFabric.randomEndereco();
     }
 
     @AfterEach
