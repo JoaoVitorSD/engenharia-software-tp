@@ -43,9 +43,6 @@ public class EnderecoInteractorTests {
     private Endereco endereco;
     @MockBean
     private PessoaGatewayAdapter pessoaGatewayAdapter;
-    @BeforeAll
-    public static void beforeAll(){
-    }
     @BeforeEach
     public void setup(){
         doNothing().when(pessoaGatewayAdapter).deleteById(anyString());
