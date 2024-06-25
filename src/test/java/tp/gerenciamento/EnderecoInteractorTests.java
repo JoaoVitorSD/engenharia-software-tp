@@ -17,6 +17,7 @@ import tp.gerenciamento.domain.entity.Pessoa;
 import tp.gerenciamento.domain.exception.ElementoNaoEncontradoException;
 import tp.gerenciamento.domain.exception.ParametroInvalidoException;
 import tp.gerenciamento.domain.interactor.EnderecoInteractor;
+import tp.gerenciamento.infraestructure.adapter.EnderecoGatewayAdapter;
 import tp.gerenciamento.infraestructure.adapter.PessoaGatewayAdapter;
 import tp.gerenciamento.infraestructure.conf.EntityFabric;
 
@@ -43,15 +44,21 @@ public class EnderecoInteractorTests {
     private Endereco endereco;
     @MockBean
     private PessoaGatewayAdapter pessoaGatewayAdapter;
+
+    @MockBean
+    private EnderecoGatewayAdapter enderecoGatewayAdapter;
     @BeforeEach
     public void setup(){
         doNothing().when(pessoaGatewayAdapter).deleteById(anyString());
         pessoa = EntityFabric.randomPessoa();
-        pessoa.setId(UUID.randomUUID().toString());
-        when(pessoaGatewayAdapter.salvar(pessoa)).thenReturn(pessoa);
+            pessoa.setId(UUID.randomUUID().toString());
 
         when(pessoaGatewayAdapter.findById(pessoa.getId())).thenReturn(Optional.of(pessoa));
         endereco = EntityFabric.randomEndereco();
+
+        when(enderecoGatewayAdapter.salvar(pessoa, endereco)).thenReturn(endereco);
+        when(enderecoGatewayAdapter.findById(endereco.getId())).thenReturn(Optional.of(endereco));
+
     }
 
     @AfterEach
